@@ -113,13 +113,13 @@ const PostTask = () => {
         <meta name="description" content="Post a task: describe the job, pick location, add details and set your budget to get offers from skilled Taskers nearby." />
         <link rel="canonical" href={typeof window !== "undefined" ? window.location.href : "/post-task"} />
       </Helmet>
-      <section className="container mx-auto max-w-3xl px-4 gr-section">
+      <section className="container mx-auto max-w-3xl px-4 py-10">
         <header className="mb-6">
           <h1 className="mb-2 text-3xl font-bold tracking-tight">Post a task</h1>
           <p className="text-muted-foreground">Tell us what you need done and get offers from skilled Taskers in your area.</p>
         </header>
 
-        <Card className="soft-card animate-enter">
+        <Card className="soft-card">
           <CardHeader>
             <CardTitle className="flex items-center gap-2 text-xl">
               {(() => {
@@ -132,7 +132,7 @@ const PostTask = () => {
           </CardHeader>
           <CardContent className="space-y-6">
             {step === 0 && (
-              <div className="space-y-5 animate-enter">
+              <div className="space-y-5">
                 <div className="space-y-2">
                   <Label htmlFor="title">Task title</Label>
                   <Input
@@ -176,7 +176,7 @@ const PostTask = () => {
             )}
 
             {step === 1 && (
-              <div className="space-y-5 animate-enter">
+              <div className="space-y-5">
                 <div className="flex items-center justify-between rounded-md border p-4">
                   <div>
                     <Label htmlFor="remote" className="mb-1 block">This can be done remotely</Label>
@@ -208,7 +208,7 @@ const PostTask = () => {
             )}
 
             {step === 2 && (
-              <div className="space-y-5 animate-enter">
+              <div className="space-y-5">
                 <div className="space-y-2">
                   <Label htmlFor="details">Provide more details</Label>
                   <Textarea
@@ -248,7 +248,7 @@ const PostTask = () => {
             )}
 
             {step === 3 && (
-              <div className="space-y-5 animate-enter">
+              <div className="space-y-5">
                 <RadioGroup
                   value={form.budgetType}
                   onValueChange={(v) => setForm({ ...form, budgetType: v as "fixed" | "open" })}
@@ -288,11 +288,11 @@ const PostTask = () => {
                 Back
               </Button>
               {step < steps.length - 1 ? (
-                <Button variant="hero" className="hover-scale" onClick={next} disabled={!isValid}>
+                <Button variant="hero" onClick={next} disabled={!isValid}>
                   Continue
                 </Button>
               ) : (
-                <Button variant="hero" className="hover-scale" onClick={submit} disabled={!isValid}>
+                <Button variant="hero" onClick={submit} disabled={!isValid}>
                   Submit task
                 </Button>
               )}
