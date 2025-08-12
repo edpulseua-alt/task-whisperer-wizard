@@ -38,6 +38,19 @@ All colors MUST be HSL.
 
     --radius: 0.5rem;
 
+    /* Extended design tokens */
+    --primary-glow: 222.2 84% 20%;
+    --accent-2: 200 94% 40%;
+
+    /* Gradients and shadows */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)) 70%);
+    --shadow-soft: 0 10px 30px -12px hsl(var(--ring) / 0.15);
+    --shadow-glow: 0 0 0 6px hsl(var(--ring) / 0.15);
+
+    /* Motion */
+    --transition-smooth: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* Sidebar tokens */
     --sidebar-background: 0 0% 98%;
 
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -101,5 +114,25 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .bg-gradient-primary {
+    background-image: var(--gradient-primary);
+  }
+  .shadow-soft {
+    box-shadow: var(--shadow-soft);
+  }
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+  .soft-card {
+    @apply bg-card text-card-foreground border rounded-lg;
+    box-shadow: var(--shadow-soft);
+    transition: var(--transition-smooth);
+  }
+  .soft-card:hover {
+    box-shadow: 0 14px 40px -14px hsl(var(--ring) / 0.25);
   }
 }
