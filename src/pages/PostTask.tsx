@@ -184,6 +184,7 @@ const PostTask = () => {
                           label="When do you need this done?"
                           value={form.date}
                           onChange={(date) => setForm({ ...form, date })}
+                          enableAccessibleFieldDOMStructure={false}
                           slots={{
                             textField: TextField,
                           }}
